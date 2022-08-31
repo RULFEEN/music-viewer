@@ -1,0 +1,9 @@
+{
+  "defaults": [
+    {
+      "name": "image-placeholder",
+      "src": "./assets/user-placeholder.png",
+      "id": 1
+    }
+  ]
+}
