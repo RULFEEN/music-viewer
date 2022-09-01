@@ -87,6 +87,7 @@ findUser.addEventListener('submit', (e)=>{
                 div.id = lastId +=1
                 div.className = 'playlist flex-container'
                 playlists.appendChild(div)
+                document.querySelector('#user-container').className = 'flex-container user'
             })
         })
         .catch(err => console.error(err));
@@ -103,6 +104,7 @@ playlists.addEventListener('click', (e)=>{
 	.then(data => {
         console.log(data)
         let lastId = parseInt(results.lastElementChild.id)
+        document.querySelector('#music-p').innerHTML = 'Songs'
         results.innerHTML = '<div class="result disabled" id="0"></div>'
         data.items.forEach(song => {
             let div = document.createElement('div')
@@ -135,6 +137,7 @@ recommended.addEventListener('click', (e)=>{
 	.then(data => {
         console.log(data)
         let lastId = parseInt(results.lastElementChild.id)
+        document.querySelector('#music-p').innerHTML = 'Songs'
         results.innerHTML = '<div class="result disabled" id="0"></div>'
         data.items.forEach(song => {
             let div = document.createElement('div')
