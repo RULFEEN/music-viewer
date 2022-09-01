@@ -46,3 +46,9 @@ img#user-image {
     padding: 5px;
     width: 150px;
 }
+
+.playlist.flex-container {
+    border-bottom: 1px solid black;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
