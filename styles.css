@@ -14,18 +14,10 @@
     color: black;
 }
 
-.flex-container#user-container {
-    justify-content: center;
-    align-items: center;
-}
-
 .flex-child {
     flex: 1;
-    border: 2px;
-}
-
-.flex-child:first-child {
-    margin-right: 20px
+    border: 2px black;
+    margin-right: 10px
 }
 
 .hidden {
