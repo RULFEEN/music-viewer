@@ -51,4 +51,9 @@ img#user-image {
     border-bottom: 1px solid black;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.flex-container.user#user-container {
+    border-radius: 30px;
 }
