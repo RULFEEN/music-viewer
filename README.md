@@ -16,11 +16,22 @@
         The first challenge would be finding users. Just like it's impossible to narrow down one user on Spotify search, we haven't been able to find every user.
 
 3. HOW TO USE THE PROJECT
-    1. Example.
+    1. Example
         Check out ./assets/Playlists Viewer.mp4 for an illustration.
     
-    2. Visual aids.
+    2. Visual aids
         Check out ./assets/Screenshots/ for screenshots.
+    
+    3. Usernames and Peculiar playlists
+        "Name": "Playlist"
+        "Garry Waller": "Arblaster"
+        "Nelson": "Dialect selects"
+        "Donald Yan": "auxify"
+        "Cliona": "old ass car jams"
+        "Sly": "Manadriller"
+
+        Disclaimer:
+            The above suggestions are obviously not permanent truths. They are subject to change.
 
 4. CREDITS
 
