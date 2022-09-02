@@ -48,9 +48,9 @@ findUser.addEventListener('submit', (e)=>{
                 p.innerHTML = `${pList.name}`
                 p.id = pList.uri.split(':')[2]
                 div1.appendChild(img)
-                div1.className = 'flex-child'
+                div1.className = 'flex-child image'
                 div2.appendChild(p)
-                div2.className = 'flex-child'
+                div2.className = 'flex-child title'
                 div.appendChild(div1)
                 div.appendChild(div2)
                 div.id = lastId +=1
@@ -79,9 +79,9 @@ findUser.addEventListener('submit', (e)=>{
                 p.innerHTML = `${pList.name}`
                 p.id = pList.uri.split(':')[2]
                 div1.appendChild(img)
-                div1.className = 'flex-child'
+                div1.className = 'flex-child image'
                 div2.appendChild(p)
-                div2.className = 'flex-child'
+                div2.className = 'flex-child title'
                 div.appendChild(div1)
                 div.appendChild(div2)
                 div.id = lastId +=1
@@ -117,9 +117,9 @@ playlists.addEventListener('click', (e)=>{
             p.innerHTML = `${song.track.name}`
             p.id = song.track.id
             div1.appendChild(img)
-            div1.className = 'flex-child'
+            div1.className = 'flex-child image'
             div2.appendChild(p)
-            div2.className = 'flex-child'
+            div2.className = 'flex-child title'
             div.appendChild(div1)
             div.appendChild(div2)
             div.id = lastId +=1
@@ -150,9 +150,9 @@ recommended.addEventListener('click', (e)=>{
             p.innerHTML = `${song.track.name}`
             p.id = song.track.id
             div1.appendChild(img)
-            div1.className = 'flex-child'
+            div1.className = 'flex-child image'
             div2.appendChild(p)
-            div2.className = 'flex-child'
+            div2.className = 'flex-child title'
             div.appendChild(div1)
             div.appendChild(div2)
             div.id = lastId +=1
