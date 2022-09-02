@@ -6,6 +6,19 @@
 #heading {
     background-color: black;
     color: #1ED760;
+    font-family: 'Dancing Script', Georgia, Times, serif;
+}
+
+#user-container {
+    font-family: 'Lobster', Georgia, 'Times New Roman', Times, serif;
+}
+
+h2 {
+    font-family: 'Dancing Script', Georgia, Times, serif;
+}
+
+p {
+    font-family: 'Lobster', Georgia, 'Times New Roman', Times, serif;
 }
 
 .flex-container {
