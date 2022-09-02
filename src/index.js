@@ -17,7 +17,7 @@ findUser.addEventListener('submit', (e)=>{
         console.log(data)
         let playlists = data.playlists.items
         // playlists.forEach(user => console.log(user.data.owner.name))
-        let goal = playlists.find(user => user.data.owner.name == e.target.user.value || user.data.owner.name.split(' ')[0, 2] == e.target.user.value)
+        let goal = playlists.find(user => user.data.owner.name.toString().toLowerCase() == e.target.user.value.toString().toLowerCase() || user.data.owner.name.split(' ')[0, 2] == e.target.user.value)
         let username = goal.data.owner.username
         fetch(`https://spotify81.p.rapidapi.com/user_profile?id=${username}&playlistLimit=50&artistLimit=10`, options)
         .then(res => res.json())
