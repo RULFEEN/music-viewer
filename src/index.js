@@ -114,7 +114,7 @@ playlists.addEventListener('click', (e)=>{
 	.then(data => {
         console.log(data)
         let lastId = parseInt(results.lastElementChild.id)
-        document.querySelector('#music-p').innerHTML = 'Songs'
+        document.querySelector('#music-p').innerHTML = `${e.target.parentNode.parentNode.lastElementChild.lastElementChild.textContent}`
         results.innerHTML = '<div class="result disabled" id="0"></div>'
         data.items.forEach(song => {
             let div = document.createElement('div')
@@ -147,7 +147,7 @@ recommended.addEventListener('click', (e)=>{
 	.then(data => {
         console.log(data)
         let lastId = parseInt(results.lastElementChild.id)
-        document.querySelector('#music-p').innerHTML = 'Songs'
+        document.querySelector('#music-p').innerHTML = `${e.target.parentNode.parentNode.lastElementChild.lastElementChild.textContent}`
         results.innerHTML = '<div class="result disabled" id="0"></div>'
         data.items.forEach(song => {
             let div = document.createElement('div')
