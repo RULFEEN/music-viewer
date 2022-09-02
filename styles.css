@@ -57,3 +57,11 @@ img#user-image {
 .flex-container.user#user-container {
     border-radius: 30px;
 }
+
+.flex-child.title {
+    flex-grow: 4;
+}
+
+.flex-child.image {
+    flex-grow: 1;
+}
