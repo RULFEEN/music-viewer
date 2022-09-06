@@ -11,6 +11,7 @@ findUser.addEventListener('submit', (e)=>{
     e.preventDefault()
     // console.log(e.target.user.value)
     // console.log(e.target.playlist.value)
+    document.querySelector("#page-loader").className = "loader"
     if(e.target.playlist.value.length > 0 && e.target.playlist.value.trim().length > 0){
         fetch(`https://spotify81.p.rapidapi.com/search?q=${e.target.playlist.value}&type=playlists&offset=0&limit=100&numberOfTopResults=25`, options)
         .then(response => response.json())
@@ -90,6 +91,7 @@ findUser.addEventListener('submit', (e)=>{
                         div.className = 'playlist flex-container'
                         playlists.appendChild(div)
                         document.querySelector('#user-container').className = 'flex-container user'
+                        document.querySelector("#page-loader").className = "loader disabled"
                     })
                 })
                 .catch(err => console.error(err));
@@ -110,6 +112,7 @@ const playlists = document.querySelector('#playlists')
 playlists.addEventListener('click', (e)=>{
     // console.log(e.target)
     // console.log(e.target.parentNode.parentNode.lastElementChild.lastElementChild.id)
+    document.querySelector("#music-loader").className = "loader"
     fetch(`https://spotify81.p.rapidapi.com/playlist_tracks?id=${e.target.parentNode.parentNode.lastElementChild.lastElementChild.id}&offset=0&limit=100`, options)
 	.then(res => res.json())
 	.then(data => {
@@ -136,6 +139,7 @@ playlists.addEventListener('click', (e)=>{
             div.id = lastId +=1
             div.className = 'playlist flex-container'
             results.appendChild(div)
+            document.querySelector("#music-loader").className = "loader disabled"
         })
     })
 	.catch(err => {
@@ -166,6 +170,7 @@ playlists.addEventListener('click', (e)=>{
                 div.id = lastId +=1
                 div.className = 'playlist flex-container'
                 results.appendChild(div)
+                document.querySelector("#music-loader").className = "loader disabled"
             })
         })
         .catch(err2 => console.error(err2))
@@ -175,6 +180,7 @@ playlists.addEventListener('click', (e)=>{
 const recommended = document.querySelector('#recommended')
 recommended.addEventListener('click', (e)=>{
     // console.log(e.target)
+    document.querySelector("#music-loader").className = "loader"
     fetch(`https://spotify81.p.rapidapi.com/playlist_tracks?id=${e.target.parentNode.parentNode.lastElementChild.lastElementChild.id}&offset=0&limit=100`, options)
 	.then(res => res.json())
 	.then(data => {
@@ -200,7 +206,8 @@ recommended.addEventListener('click', (e)=>{
             div.appendChild(div2)
             div.id = lastId +=1
             div.className = 'playlist flex-container'
-            results.appendChild(div) 
+            results.appendChild(div)
+            document.querySelector("#music-loader").className = "loader disabled"
         })
     })
 	.catch(err => {
@@ -230,7 +237,8 @@ recommended.addEventListener('click', (e)=>{
                 div.appendChild(div2)
                 div.id = lastId +=1
                 div.className = 'playlist flex-container'
-                results.appendChild(div) 
+                results.appendChild(div)
+                document.querySelector("#music-loader").className = "loader disabled"
             })
         })
         .catch(err2 => console.error(err2))
