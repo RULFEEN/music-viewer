@@ -15,7 +15,7 @@ findUser.addEventListener('submit', (e)=>{
         fetch(`https://spotify81.p.rapidapi.com/search?q=${e.target.playlist.value}&type=playlists&offset=0&limit=100&numberOfTopResults=25`, options)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             let playlists = data.playlists.items
             // playlists.forEach(user => console.log(user.data.owner.name))
             if(e.target.user.value.length > 0 && e.target.user.value.trim().length > 0){
@@ -24,7 +24,7 @@ findUser.addEventListener('submit', (e)=>{
                 fetch(`https://spotify81.p.rapidapi.com/user_profile?id=${username}&playlistLimit=50&artistLimit=10`, options)
                 .then(res => res.json())
                 .then(info => {
-                    console.log(info)
+                    // console.log(info)
                     if(info.name != false){
                         document.querySelector("#username").innerHTML = `${info.name}`
                     }
@@ -66,7 +66,7 @@ findUser.addEventListener('submit', (e)=>{
                 fetch('https://spotify81.p.rapidapi.com/user_profile?id=spotify&playlistLimit=44&artistLimit=10', options)
                 .then(res => res.json())
                 .then(info => {
-                    console.log(info)
+                    // console.log(info)
                     let playlists = document.querySelector('#recommended')
                     let lastId = parseInt(playlists.lastElementChild.id)
                     info.public_playlists.forEach((pList) => {
@@ -108,11 +108,12 @@ findUser.addEventListener('submit', (e)=>{
 const results = document.querySelector('#results')
 const playlists = document.querySelector('#playlists')
 playlists.addEventListener('click', (e)=>{
+    // console.log(e.target)
     // console.log(e.target.parentNode.parentNode.lastElementChild.lastElementChild.id)
     fetch(`https://spotify81.p.rapidapi.com/playlist_tracks?id=${e.target.parentNode.parentNode.lastElementChild.lastElementChild.id}&offset=0&limit=100`, options)
 	.then(res => res.json())
 	.then(data => {
-        console.log(data)
+        // console.log(data)
         let lastId = parseInt(results.lastElementChild.id)
         document.querySelector('#music-p').innerHTML = `${e.target.parentNode.parentNode.lastElementChild.lastElementChild.textContent}`
         results.innerHTML = '<div class="result disabled" id="0"></div>'
@@ -137,15 +138,47 @@ playlists.addEventListener('click', (e)=>{
             results.appendChild(div)
         })
     })
-	.catch(err => console.error(err));
+	.catch(err => {
+        console.error(err)
+        fetch(`https://spotify81.p.rapidapi.com/playlist_tracks?id=${e.target.parentNode.lastElementChild.lastElementChild.id}&offset=0&limit=100`, options)
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data)
+            let lastId = parseInt(results.lastElementChild.id)
+            document.querySelector('#music-p').innerHTML = `${e.target.parentNode.lastElementChild.lastElementChild.textContent}`
+            results.innerHTML = '<div class="result disabled" id="0"></div>'
+            data.items.forEach(song => {
+                let div = document.createElement('div')
+                let img = document.createElement('img')
+                let p = document.createElement('p')
+                let div1 = document.createElement('div')
+                let div2 = document.createElement('div')
+                img.src = `${song.track.album.images[2].url}`
+                img.class = 'result-image'
+                p.innerHTML = `${song.track.name}`
+                p.id = song.track.id
+                div1.appendChild(img)
+                div1.className = 'flex-child image'
+                div2.appendChild(p)
+                div2.className = 'flex-child title'
+                div.appendChild(div1)
+                div.appendChild(div2)
+                div.id = lastId +=1
+                div.className = 'playlist flex-container'
+                results.appendChild(div)
+            })
+        })
+        .catch(err2 => console.error(err2))
+    });
 })
 
 const recommended = document.querySelector('#recommended')
 recommended.addEventListener('click', (e)=>{
+    // console.log(e.target)
     fetch(`https://spotify81.p.rapidapi.com/playlist_tracks?id=${e.target.parentNode.parentNode.lastElementChild.lastElementChild.id}&offset=0&limit=100`, options)
 	.then(res => res.json())
 	.then(data => {
-        console.log(data)
+        // console.log(data)
         let lastId = parseInt(results.lastElementChild.id)
         document.querySelector('#music-p').innerHTML = `${e.target.parentNode.parentNode.lastElementChild.lastElementChild.textContent}`
         results.innerHTML = '<div class="result disabled" id="0"></div>'
@@ -170,5 +203,36 @@ recommended.addEventListener('click', (e)=>{
             results.appendChild(div) 
         })
     })
-	.catch(err => console.error(err));
+	.catch(err => {
+        console.error(err)
+        fetch(`https://spotify81.p.rapidapi.com/playlist_tracks?id=${e.target.parentNode.lastElementChild.lastElementChild.id}&offset=0&limit=100`, options)
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data)
+            let lastId = parseInt(results.lastElementChild.id)
+            document.querySelector('#music-p').innerHTML = `${e.target.parentNode.lastElementChild.lastElementChild.textContent}`
+            results.innerHTML = '<div class="result disabled" id="0"></div>'
+            data.items.forEach(song => {
+                let div = document.createElement('div')
+                let img = document.createElement('img')
+                let p = document.createElement('p')
+                let div1 = document.createElement('div')
+                let div2 = document.createElement('div')
+                img.src = `${song.track.album.images[2].url}`
+                img.class = 'result-image'
+                p.innerHTML = `${song.track.name}`
+                p.id = song.track.id
+                div1.appendChild(img)
+                div1.className = 'flex-child image'
+                div2.appendChild(p)
+                div2.className = 'flex-child title'
+                div.appendChild(div1)
+                div.appendChild(div2)
+                div.id = lastId +=1
+                div.className = 'playlist flex-container'
+                results.appendChild(div) 
+            })
+        })
+        .catch(err2 => console.error(err2))
+    });
 })
